@@ -1,2 +1,2 @@
 # calcemist
-An open source computer algebra system
+An open source computer algebra system using ESP32-S3
