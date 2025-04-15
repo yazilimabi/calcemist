@@ -1,3 +1,3 @@
 idf_component_register(SRCS "main.cpp"
-                    REQUIRES Lexer
+                    REQUIRES Lexer led_strip
                     INCLUDE_DIRS ".")
