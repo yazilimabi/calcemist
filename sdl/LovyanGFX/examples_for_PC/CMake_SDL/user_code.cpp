@@ -23,13 +23,15 @@ int32_t add_y = 0;
 void setup()
 {
   lcd.init();
+  
 }
 
 void loop()
 {
   static int i;
   ++i;
-  lcd.fillCircle(current_x >> 8, current_y >> 8, 5, i);
+  if(lgfx::gpio_in(31))
+    lcd.fillCircle(current_x >> 8, current_y >> 8, 5, i);
   current_x += add_x;
   current_y += add_y;
   add_x += (current_x < target_x) ? 1 : -1;

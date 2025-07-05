@@ -7,6 +7,7 @@ void loop(void);
 __attribute__((weak))
 int user_func(bool* running)
 {
+  lgfx::Panel_sdl::addKeyCodeMapping(SDLK_n, 31);
   setup();
   do
   {
@@ -17,6 +18,7 @@ int user_func(bool* running)
 
 int main(int, char**)
 {
+  
   return lgfx::Panel_sdl::main(user_func);
 }
 

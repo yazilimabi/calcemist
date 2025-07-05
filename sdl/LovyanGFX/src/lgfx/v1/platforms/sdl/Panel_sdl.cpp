@@ -88,6 +88,7 @@ namespace lgfx
     {
       if ((event.type == SDL_KEYDOWN) || (event.type == SDL_KEYUP))
       {
+        
         auto mon = getMonitorByWindowID(event.button.windowID);
         int gpio = -1;
 
@@ -105,8 +106,9 @@ namespace lgfx
           /// L/Rキーで画面回転
           case SDLK_r:
           case SDLK_l:
-            if (event.type == SDL_KEYDOWN && event.key.keysym.mod == _keymod) 
+            if (event.type == SDL_KEYDOWN && (event.key.keysym.mod & KMOD_CTRL)) 
             {
+              //printf("trying rotation\n");
               if (mon != nullptr)
               {
                 mon->frame_rotation = (mon->frame_rotation += event.key.keysym.sym == SDLK_r ? 1 : -1);
@@ -122,7 +124,7 @@ namespace lgfx
 
           /// 1～6キーで画面拡大率変更
           case SDLK_1: case SDLK_2: case SDLK_3: case SDLK_4: case SDLK_5: case SDLK_6:
-            if (event.type == SDL_KEYDOWN && event.key.keysym.mod == _keymod) 
+            if (event.type == SDL_KEYDOWN && (event.key.keysym.mod & KMOD_CTRL)) 
             {
               if (mon != nullptr)
               {
@@ -135,8 +137,10 @@ namespace lgfx
           }
         }
         if (event.type == SDL_KEYDOWN) {
+          //printf("Setting %d low\n", gpio);
           gpio_lo(gpio);
         } else {
+          //printf("Setting %d high\n", gpio);
           gpio_hi(gpio);
         }
       }
@@ -258,6 +262,7 @@ namespace lgfx
     _update_out_semaphore = SDL_CreateSemaphore(0);
     for (size_t pin = 0; pin < EMULATED_GPIO_MAX; ++pin) { gpio_hi(pin); }
     /*Initialize the SDL*/
+    SDL_Init(SDL_INIT_EVENTS);
     SDL_Init(SDL_INIT_VIDEO);
     SDL_StartTextInput();
 
