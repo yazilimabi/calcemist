@@ -38,11 +38,15 @@
 #ifndef _LGFX_QRCODE_H_
 #define _LGFX_QRCODE_H_
 
-#ifndef __cplusplus
-typedef unsigned char bool;
-static const bool false = 0;
-static const bool true = 1;
-#endif
+
+// CALCEMIST MODIFICATION START
+//#ifndef __cplusplus
+//typedef unsigned char bool;
+//static const bool false = 0;
+//static const bool true = 1;
+//#endif
+#include <stdbool.h>
+// CALCEMIST MODIFICATION END
 
 #include <stdint.h>
 
