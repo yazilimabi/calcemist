@@ -8,6 +8,7 @@ add_definitions(-DLGFX_SDL)
 # LovyanGFXのあるパスと位置関係を変えた場合は相対パス記述を環境に合わせて調整すること;
 file(GLOB Target_Files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CONFIGURE_DEPENDS 
     *.cpp
+    UI_Src/*.cpp
     ../../../LovyanGFX/src/lgfx/Fonts/efont/*.c
     ../../../LovyanGFX/src/lgfx/Fonts/IPA/*.c
     ../../../LovyanGFX/src/lgfx/utility/*.c
@@ -22,6 +23,7 @@ add_executable (LGFX_SDL ${Target_Files})
 # includeするファイルのパスを指定する;
 # LovyanGFXのあるパスと位置関係を変えた場合は相対パス記述を環境に合わせて調整すること;
 target_include_directories(LGFX_SDL PUBLIC "../../../LovyanGFX/src/")
+target_include_directories(LGFX_SDL PUBLIC "UI_Include/")
 
 IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
 
