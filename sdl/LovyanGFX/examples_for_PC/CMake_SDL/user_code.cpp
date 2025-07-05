@@ -21,5 +21,5 @@ void loop()
     {
         screen.lcd->drawCircle(new_tp.x, new_tp.y, 5, TFT_WHITE);
     }
-    lgfx::delay(1);
+    lgfx::delay(10);
 }

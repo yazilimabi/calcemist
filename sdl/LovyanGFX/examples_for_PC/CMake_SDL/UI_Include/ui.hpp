@@ -12,4 +12,6 @@ public:
 
     LGFX* lcd;
 private:
+    LGFX_Sprite* top_buffer;
+    LGFX_Sprite* user_buffer;
 };
